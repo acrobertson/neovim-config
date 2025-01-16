@@ -1,0 +1,1 @@
+require("myLuaConf.plugins.snacks")
