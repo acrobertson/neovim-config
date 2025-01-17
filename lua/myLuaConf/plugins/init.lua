@@ -1,1 +1,3 @@
-require("myLuaConf.plugins.snacks")
+return {
+	require("myLuaConf.plugins.snacks"),
+}

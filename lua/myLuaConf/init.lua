@@ -3,5 +3,6 @@ require("myLuaConf.options")
 require("myLuaConf.autocmds")
 require("myLuaConf.keymaps")
 
--- General plugins
-require("myLuaConf.plugins")
+-- Lazy-load plugins
+-- require("myLuaConf.plugins")
+require("lz.n").load("myLuaConf.plugins")
