@@ -132,7 +132,11 @@
           # use with packadd and an autocommand in config to achieve lazy loading
           optionalPlugins = {
             gitPlugins = with pkgs.neovimPlugins; [ ];
-            general = with pkgs.vimPlugins; [ which-key-nvim ];
+            general = with pkgs.vimPlugins; [
+              nvim-treesitter.withAllGrammars
+              nvim-treesitter-textobjects
+              which-key-nvim
+            ];
           };
 
           # shared libraries to be added to LD_LIBRARY_PATH
