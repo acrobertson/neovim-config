@@ -35,7 +35,6 @@ opt.cursorline = true
 
 -- Folds
 opt.foldlevel = 99
--- TODO: add treesitter fold integration
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 opt.hlsearch = true
