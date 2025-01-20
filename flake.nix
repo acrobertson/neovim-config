@@ -131,6 +131,7 @@
             general = with pkgs.vimPlugins; [
               lz-n
               snacks-nvim
+              tokyonight-nvim
               vim-sleuth
             ];
           };
