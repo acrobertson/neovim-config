@@ -35,6 +35,9 @@ opt.cursorline = true
 
 -- Folds
 opt.foldlevel = 99
+opt.foldexpr = "v:lua.require'config.util'.ui.foldexpr()"
+opt.foldmethod = "expr"
+opt.foldtext = ""
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 opt.hlsearch = true
@@ -109,8 +112,7 @@ opt.splitbelow = true -- Open new split below the current window
 opt.splitkeep = "screen" -- Keep the screen when splitting
 opt.splitright = true -- Open new split to the right of the current window
 
--- TODO: enable after snacks is configured
--- opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 
 -- Time in milliseconds to wait for a mapped sequence to complete
 -- Lower than default (1000) to quickly trigger which-key
