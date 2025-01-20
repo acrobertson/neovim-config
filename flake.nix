@@ -146,6 +146,9 @@
               nvim-treesitter-textobjects
               which-key-nvim
             ];
+            test = with pkgs.vimPlugins; [
+              lazydev-nvim
+            ];
           };
 
           # shared libraries to be added to LD_LIBRARY_PATH
@@ -199,16 +202,18 @@
       packageDefinitions = {
         # These are the names of your packages
         # you can include as many as you wish.
-        nvim =
+        # TODO: change back to `nvim` when the config is ready
+        nvim-new =
           { pkgs, ... }:
           {
             # they contain a settings set defined above
             # see :help nixCats.flake.outputs.settings
             settings = {
               wrapRc = true;
+              configDirName = "nvim-new";
               # IMPORTANT:
               # your alias may not conflict with your other packages.
-              aliases = [ "vim" ];
+              # aliases = [ "vim" ];
               # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
             };
             # and a set of categories that you want
@@ -216,23 +221,30 @@
             categories = {
               general = true;
               gitPlugins = true;
-              customPlugins = true;
+              test = false;
+            };
+          };
+        # an extra test package with normal lua reload for fast edits
+        # nix doesnt provide the config in this package, allowing you free reign to edit it.
+        # then you can swap back to the normal pure package when done.
+        nvim-test =
+          { pkgs, mkNvimPlugin, ... }:
+          {
+            settings = {
+              wrapRc = false;
+              configDirName = "nvim-new";
+              unwrappedCfgPath = "/Users/alecrobertson/nixcats";
+            };
+            categories = {
+              general = true;
+              gitPlugins = true;
               test = true;
-              example = {
-                youCan = "add more than just booleans";
-                toThisSet = [
-                  "and the contents of this categories set"
-                  "will be accessible to your lua with"
-                  "nixCats('path.to.value')"
-                  "see :help nixCats"
-                ];
-              };
             };
           };
       };
       # In this section, the main thing you will need to do is change the default package name
       # to the name of the packageDefinitions entry you wish to use as the default.
-      defaultPackageName = "nvim";
+      defaultPackageName = "nvim-new";
     in
 
     # see :help nixCats.flake.outputs.exports
