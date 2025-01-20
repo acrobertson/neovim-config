@@ -116,6 +116,12 @@
           # this includes LSPs
           lspsAndRuntimeDeps = {
             general = with pkgs; [
+              # system
+              fd
+              ripgrep
+              # lua
+              lua-language-server
+              stylua
             ];
           };
 
@@ -134,6 +140,7 @@
           optionalPlugins = {
             gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
+              nvim-lspconfig
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
               which-key-nvim

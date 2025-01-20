@@ -1,3 +1,5 @@
+_G.Config = require("config.util")
+
 -- Non-plugin config
 require("config.options")
 require("config.autocmds")

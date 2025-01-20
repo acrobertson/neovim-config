@@ -4,6 +4,7 @@ return {
 	event = "DeferredUIEnter",
 
 	after = function()
+		---@diagnostic disable-next-line: missing-fields
 		require("which-key").setup({
 			preset = "helix",
 			spec = {
