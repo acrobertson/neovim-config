@@ -119,6 +119,10 @@
               # system
               fd
               ripgrep
+              # nix
+              nix-doc
+              nixd
+              nixfmt-rfc-style
               # lua
               lua-language-server
               stylua
@@ -223,6 +227,13 @@
               gitPlugins = true;
               test = false;
             };
+            extra = {
+              nixdExtras = {
+                flake-path = "/Users/alecrobertson/dotfiles.nix";
+                homeCFGname = "alecrobertson";
+                nixpkgs = nixpkgs;
+              };
+            };
           };
         # an extra test package with normal lua reload for fast edits
         # nix doesnt provide the config in this package, allowing you free reign to edit it.
@@ -239,6 +250,13 @@
               general = true;
               gitPlugins = true;
               test = true;
+            };
+            extra = {
+              nixdExtras = {
+                flake-path = "/Users/alecrobertson/dotfiles.nix";
+                homeCFGname = "alecrobertson";
+                nixpkgs = nixpkgs;
+              };
             };
           };
       };

@@ -25,6 +25,53 @@ servers.lua_ls = {
 	},
 }
 
+servers.nixd = {
+	nixd = {
+		nixpkgs = {
+			-- nixd requires some configuration in flake based configs.
+			-- luckily, the nixCats plugin is here to pass whatever we need!
+			expr = [[import (builtins.getFlake "]]
+				.. nixCats.extra("nixdExtras.nixpkgs")
+				.. [[") { }   ]],
+		},
+		formatting = {
+			command = { "nixfmt" },
+		},
+		diagnostic = {
+			suppress = {
+				"sema-escaping-with",
+			},
+		},
+		options = {},
+	},
+}
+-- If you integrated with your system flake,
+-- you should pass inputs.self as nixdExtras.flake-path
+-- that way it will ALWAYS work, regardless
+-- of where your config actually was.
+-- otherwise flake-path could be an absolute path to your system flake, or nil or false
+if nixCats.extra("nixdExtras.flake-path") then
+	local flakePath = nixCats.extra("nixdExtras.flake-path")
+	if nixCats.extra("nixdExtras.systemCFGname") then
+		-- (builtins.getFlake "<path_to_system_flake>").nixosConfigurations."<name>".options
+		servers.nixd.nixd.options.nixos = {
+			expr = [[(builtins.getFlake "]]
+				.. flakePath
+				.. [[").nixosConfigurations."]]
+				.. nixCats.extra("nixdExtras.systemCFGname")
+				.. [[".options]],
+		}
+	end
+	if nixCats.extra("nixdExtras.homeCFGname") then
+		-- (builtins.getFlake "<path_to_system_flake>").homeConfigurations."<name>".options
+		servers.nixd.nixd.options["home-manager"] = {
+			expr = [[(builtins.getFlake "]] .. flakePath .. [[").homeConfigurations."]] .. nixCats.extra(
+				"nixdExtras.homeCFGname"
+			) .. [[".options]],
+		}
+	end
+end
+
 return {
 	{
 		"nvim-lspconfig",
