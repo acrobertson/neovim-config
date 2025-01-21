@@ -87,7 +87,10 @@ vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
--- TODO: Formatting
+-- Formatting
+vim.keymap.set({ "n", "v" }, "<leader>cf", function()
+	Config.format({ force = true })
+end)
 
 -- Diagnostics
 local diagnostic_goto = function(next, severity)
@@ -105,7 +108,9 @@ vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error"
 vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
--- TODO: toggle options (after configuring snacks)
+-- Toggle options
+Config.format.snacks_toggle():map("<leader>uf")
+Config.format.snacks_toggle(true):map("<leader>uF")
 
 -- TODO: Git
 

@@ -85,7 +85,7 @@ return {
 		load = vim.cmd.packadd,
 
 		after = function()
-			-- TODO: set up autoformat
+			Config.format.register(Config.lsp.formatter())
 
 			-- Set up keymaps
 			Config.lsp.on_attach(function(client, buffer)

@@ -134,6 +134,7 @@
             gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
               lz-n
+              plenary-nvim
               snacks-nvim
               tokyonight-nvim
               vim-sleuth
@@ -145,6 +146,7 @@
           optionalPlugins = {
             gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
+              conform-nvim
               nvim-lspconfig
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects

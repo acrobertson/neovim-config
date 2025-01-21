@@ -1,6 +1,8 @@
 ---@class config.util.lsp
 local M = {}
 
+---@alias lsp.Client.filter {id?: number, bufnr?: number, name?: string, method?: string, filter?:fun(client: lsp.Client):boolean}
+
 ---@param on_attach fun(client:vim.lsp.Client, buffer)
 ---@param name? string
 function M.on_attach(on_attach, name)
@@ -88,6 +90,49 @@ function M.get_capabilities()
 		vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 	capabilities.textDocument.completion.completionItem.snippetSupport = true
 	return capabilities
+end
+
+function M.formatter()
+	---@type Formatter
+	local ret = {
+		name = "LSP",
+		primary = true,
+		priority = 1,
+		format = function(buf)
+			M.format({ bufnr = buf })
+		end,
+		sources = function(buf)
+			local clients = vim.lsp.get_clients({ bufnr = buffer })
+			---@param client vim.lsp.Client
+			local ret = vim.tbl_filter(function(client)
+				return client.supports_method("textDocument/formatting")
+					or client.supports_method("textDocument/rangeFormatting")
+			end, clients)
+			---@param client vim.lsp.Client
+			return vim.tbl_map(function(client)
+				return client.name
+			end, ret)
+		end,
+	}
+	return ret
+end
+
+---@alias lsp.Client.format {timeout_ms?: number, format_options?: table} | lsp.Client.filter
+
+---@param opts? lsp.Client.format
+function M.format(opts)
+	local lsp_format_opts = {
+		formatting_options = nil,
+		timeout_ms = nil,
+	}
+	opts = vim.tbl_deep_extend("force", {}, opts or {}, lsp_format_opts)
+	local ok, conform = pcall(require, "conform")
+	if ok then
+		opts.formatters = {}
+		conform.format(opts)
+	else
+		vim.lsp.buf.format(opts)
+	end
 end
 
 M.action = setmetatable({}, {

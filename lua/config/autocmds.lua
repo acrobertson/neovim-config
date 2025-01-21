@@ -2,6 +2,15 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup("config_" .. name, { clear = true })
 end
 
+-- Set up autoformatting
+vim.api.nvim_create_autocmd("User", {
+	group = augroup("autoformat"),
+	pattern = "DeferredUIEnter",
+	callback = function()
+		Config.format.setup()
+	end,
+})
+
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	group = augroup("checktime"),
