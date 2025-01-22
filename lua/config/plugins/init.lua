@@ -27,4 +27,5 @@ return {
 	require("config.plugins.which-key"),
 	require("config.plugins.lsp"),
 	require("config.plugins.formatting"),
+	require("config.plugins.git"),
 }

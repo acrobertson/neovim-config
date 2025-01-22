@@ -147,6 +147,7 @@
             gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
               conform-nvim
+              gitsigns-nvim
               nvim-lspconfig
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
