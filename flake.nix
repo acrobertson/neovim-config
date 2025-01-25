@@ -146,6 +146,7 @@
           optionalPlugins = {
             gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
+              blink-cmp
               conform-nvim
               gitsigns-nvim
               lsp_lines-nvim

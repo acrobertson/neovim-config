@@ -120,8 +120,8 @@ return {
 			local capabilities = vim.tbl_deep_extend(
 				"force",
 				vim.lsp.protocol.make_client_capabilities(),
-				-- TODO: enable when blink is configured
-				-- blink.get_lsp_capabilities(),
+				-- FIXME: runs before blink is loaded
+				-- require("blink").get_lsp_capabilities(),
 				{
 					workspace = {
 						fileOperations = {

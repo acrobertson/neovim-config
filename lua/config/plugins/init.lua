@@ -28,4 +28,5 @@ return {
 	require("config.plugins.lsp"),
 	require("config.plugins.formatting"),
 	require("config.plugins.git"),
+	require("config.plugins.completion"),
 }
