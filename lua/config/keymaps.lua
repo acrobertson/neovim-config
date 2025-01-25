@@ -142,7 +142,22 @@ if vim.lsp.inlay_hint then
 	Snacks.toggle.inlay_hints():map("<leader>uh")
 end
 
--- TODO: Git
+-- TODO: neogit
+
+vim.keymap.set("n", "<leader>gb", function()
+	Snacks.picker.git_log_line()
+end, { desc = "Git Blame Line" })
+vim.keymap.set({ "n", "x" }, "<leader>gB", function()
+	Snacks.gitbrowse()
+end, { desc = "Git Browse (open)" })
+vim.keymap.set({ "n", "x" }, "<leader>gY", function()
+	Snacks.gitbrowse({
+		open = function(url)
+			vim.fn.setreg("+", url)
+		end,
+		notify = false,
+	})
+end, { desc = "Git Browse (copy)" })
 
 -- Quit
 vim.keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
