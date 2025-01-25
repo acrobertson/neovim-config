@@ -148,6 +148,7 @@
             general = with pkgs.vimPlugins; [
               conform-nvim
               gitsigns-nvim
+              lsp_lines-nvim
               nvim-lspconfig
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects

@@ -85,6 +85,7 @@ return {
 		load = vim.cmd.packadd,
 
 		after = function()
+			-- Set up auto-format
 			Config.format.register(Config.lsp.formatter())
 
 			-- Set up keymaps
@@ -94,6 +95,14 @@ return {
 
 			Config.lsp.setup()
 			Config.lsp.on_dynamic_capability(require("config.plugins.lsp.keymaps").on_attach)
+
+			-- Set up diagnostics
+			vim.diagnostic.config({
+				virtual_text = false,
+				virtual_lines = {
+					highlight_whole_line = false,
+				},
+			})
 
 			-- TODO: inlay hints
 
@@ -132,6 +141,28 @@ return {
 					root_pattern = (cfg or {}).root_pattern,
 				})
 			end
+		end,
+	},
+
+	{
+		"lsp_lines.nvim",
+		event = {
+			"BufReadPost",
+			"BufNewFile",
+			"BufWritePre",
+		},
+		after = function()
+			require("lsp_lines").setup()
+
+			Snacks.toggle({
+				name = "LSP Lines",
+				get = function()
+					return vim.diagnostic.config().virtual_lines
+				end,
+				set = function()
+					require("lsp_lines").toggle()
+				end,
+			}):map("<leader>uD")
 		end,
 	},
 }

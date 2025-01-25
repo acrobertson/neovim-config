@@ -97,7 +97,8 @@ local diagnostic_goto = function(next, severity)
 	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
 	severity = severity and vim.diagnostic.severity[severity] or nil
 	return function()
-		go({ severity = severity })
+		-- Only open the float automatically if `lsp_lines` is disabled
+		go({ severity = severity, float = not vim.diagnostic.config().virtual_lines })
 	end
 end
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
@@ -132,8 +133,6 @@ Snacks.toggle.treesitter():map("<leader>uT")
 Snacks.toggle
 	.option("background", { off = "light", on = "dark", name = "Dark Background" })
 	:map("<leader>ub")
-Snacks.toggle.dim():map("<leader>uD")
--- Snacks.toggle.animate():map("<leader>ua")
 Snacks.toggle.indent():map("<leader>ug")
 Snacks.toggle.scroll():map("<leader>uS")
 Snacks.toggle.profiler():map("<leader>dpp")
