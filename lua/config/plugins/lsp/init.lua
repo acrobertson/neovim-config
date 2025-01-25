@@ -104,18 +104,25 @@ return {
 				},
 			})
 
-			-- TODO: inlay hints
+			-- Set up inlay hints
+			Config.lsp.on_supports_method("textDocument/inlayHint", function(client, buffer)
+				if
+					vim.api.nvim_buf_is_valid(buffer)
+					and vim.bo[buffer].buftype == ""
+					and not vim.tbl_contains({ "vue" }, vim.bo[buffer].filetype)
+				then
+					vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+				end
+			end)
 
-			-- TODO: codelens
-
-			-- TODO: completion
-
-			--- setup
-			-- TODO: compare with lazyvim approach
-			-- local capabilities = vim.lsp.protocol.make_client_capabilities()
-			-- capabilities =
-			-- 	vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-			-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+			-- TODO: Set up codelens
+			-- Config.lsp.on_supports_method("textDocument/codeLens", function(client, buffer)
+			-- 	vim.lsp.codelens.refresh()
+			-- 	vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+			-- 		buffer = buffer,
+			-- 		callback = vim.lsp.codelens.refresh,
+			-- 	})
+			-- end)
 
 			local capabilities = vim.tbl_deep_extend(
 				"force",
