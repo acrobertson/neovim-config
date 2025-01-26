@@ -150,6 +150,7 @@
               conform-nvim
               gitsigns-nvim
               lsp_lines-nvim
+              lualine-nvim
               nvim-lspconfig
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects

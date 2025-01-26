@@ -29,4 +29,5 @@ return {
 	require("config.plugins.formatting"),
 	require("config.plugins.git"),
 	require("config.plugins.completion"),
+	require("config.plugins.statusline"),
 }
