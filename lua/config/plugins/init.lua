@@ -11,4 +11,5 @@ return {
 	require("config.plugins.completion"),
 	require("config.plugins.statusline"),
 	require("config.plugins.autopairs"),
+	require("config.plugins.comments"),
 }

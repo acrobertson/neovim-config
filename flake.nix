@@ -155,6 +155,8 @@
               nvim-lspconfig
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
+              todo-comments-nvim
+              ts-comments-nvim
               which-key-nvim
             ];
             test = with pkgs.vimPlugins; [
