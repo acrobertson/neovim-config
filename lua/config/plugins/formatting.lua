@@ -16,7 +16,7 @@ return {
 			},
 		},
 
-		init = function()
+		beforeAll = function()
 			Config.format.register({
 				name = "conform.nvim",
 				priority = 100,
