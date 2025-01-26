@@ -30,4 +30,5 @@ return {
 	require("config.plugins.git"),
 	require("config.plugins.completion"),
 	require("config.plugins.statusline"),
+	require("config.plugins.autopairs"),
 }

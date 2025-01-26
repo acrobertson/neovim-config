@@ -151,6 +151,7 @@
               gitsigns-nvim
               lsp_lines-nvim
               lualine-nvim
+              mini-pairs
               nvim-lspconfig
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
