@@ -11,6 +11,16 @@ setmetatable(M, {
 	end,
 })
 
+---@param fn fun()
+function M.on_very_lazy(fn)
+	vim.api.nvim_create_autocmd("User", {
+		pattern = { "BufReadPost", "BufNewFile", "BufWritePre" },
+		callback = function()
+			fn()
+		end,
+	})
+end
+
 ---@param opts? {level?: number}
 function M.pretty_trace(opts)
 	opts = opts or {}
