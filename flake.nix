@@ -148,6 +148,7 @@
             general = with pkgs.vimPlugins; [
               blink-cmp
               conform-nvim
+              flash-nvim
               gitsigns-nvim
               lsp_lines-nvim
               lualine-nvim

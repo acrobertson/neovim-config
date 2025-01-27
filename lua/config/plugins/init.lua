@@ -14,4 +14,5 @@ return {
 	require("config.plugins.comments"),
 	require("config.plugins.surround"),
 	require("config.plugins.text-objects"),
+	require("config.plugins.jump"),
 }
