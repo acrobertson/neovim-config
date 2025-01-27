@@ -152,6 +152,7 @@
               lsp_lines-nvim
               lualine-nvim
               mini-pairs
+              mini-surround
               nvim-lspconfig
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects

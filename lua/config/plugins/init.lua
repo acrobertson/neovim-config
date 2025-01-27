@@ -12,4 +12,5 @@ return {
 	require("config.plugins.statusline"),
 	require("config.plugins.autopairs"),
 	require("config.plugins.comments"),
+	require("config.plugins.surround"),
 }
