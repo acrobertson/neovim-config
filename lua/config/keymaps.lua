@@ -142,8 +142,8 @@ if vim.lsp.inlay_hint then
 	Snacks.toggle.inlay_hints():map("<leader>uh")
 end
 
--- TODO: neogit
-
+-- Git
+vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Neogit status" })
 vim.keymap.set("n", "<leader>gb", function()
 	Snacks.picker.git_log_line()
 end, { desc = "Git Blame Line" })

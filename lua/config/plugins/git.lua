@@ -77,4 +77,12 @@ return {
 			}):map("<leader>uG")
 		end,
 	},
+
+	{
+		"neogit",
+		cmd = "Neogit",
+		after = function()
+			require('neogit').setup()
+		end
+	}
 }

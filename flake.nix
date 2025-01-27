@@ -156,6 +156,7 @@
               mini-pairs
               mini-surround
               nvim-lspconfig
+              neogit
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
               todo-comments-nvim
