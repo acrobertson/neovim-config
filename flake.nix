@@ -151,6 +151,7 @@
               gitsigns-nvim
               lsp_lines-nvim
               lualine-nvim
+              mini-ai
               mini-pairs
               mini-surround
               nvim-lspconfig

@@ -11,6 +11,31 @@ setmetatable(M, {
 	end,
 })
 
+-- Check if a given plugin is pending load
+function M.is_pending_load(name)
+	local plugin = require("lz.n").lookup(name)
+	return plugin ~= nil
+end
+
+-- Run a callback when the given plugin has loaded
+---@param name string
+---@param fn fun(name: string)
+function M.on_load(name, fn)
+	if M.is_pending_load(name) then
+		vim.api.nvim_create_autocmd("User", {
+			pattern = { "BufReadPost", "BufNewFile", "BufWritePre" },
+			callback = function(event)
+				if event.data == name then
+					fn(name)
+					return true
+				end
+			end,
+		})
+	else
+		fn(name)
+	end
+end
+
 ---@param fn fun()
 function M.on_very_lazy(fn)
 	vim.api.nvim_create_autocmd("User", {

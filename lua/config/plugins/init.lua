@@ -13,4 +13,5 @@ return {
 	require("config.plugins.autopairs"),
 	require("config.plugins.comments"),
 	require("config.plugins.surround"),
+	require("config.plugins.text-objects"),
 }
