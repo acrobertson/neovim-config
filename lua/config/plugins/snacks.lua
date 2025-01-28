@@ -93,14 +93,14 @@ return {
 		{
 			"<leader>fr",
 			function()
-				Snacks.picker.oldfiles()
+				Snacks.picker.recent()
 			end,
 			desc = "Recent",
 		},
 		{
 			"<leader>fR",
 			function()
-				Snacks.picker.oldfiles({ filter = { cwd = true } })
+				Snacks.picker.recent({ filter = { cwd = true } })
 			end,
 			desc = "Recent (cwd)",
 		},
