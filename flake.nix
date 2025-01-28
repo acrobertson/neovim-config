@@ -162,6 +162,7 @@
               todo-comments-nvim
               ts-comments-nvim
               which-key-nvim
+              yazi-nvim
             ];
             test = with pkgs.vimPlugins; [
               lazydev-nvim

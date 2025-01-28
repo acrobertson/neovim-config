@@ -15,4 +15,5 @@ return {
 	require("config.plugins.surround"),
 	require("config.plugins.text-objects"),
 	require("config.plugins.jump"),
+	require("config.plugins.files"),
 }
