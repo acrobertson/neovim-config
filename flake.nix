@@ -154,6 +154,7 @@
               lsp_lines-nvim
               lualine-nvim
               mini-ai
+              mini-icons
               mini-pairs
               mini-surround
               nvim-lspconfig

@@ -2,6 +2,7 @@ return {
 	{ "vim-sleuth" },
 	require("config.plugins.lazydev"),
 	require("config.plugins.colorscheme"),
+	require('config.plugins.icons'),
 	require("config.plugins.snacks"),
 	require("config.plugins.treesitter"),
 	require("config.plugins.which-key"),
