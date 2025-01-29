@@ -146,14 +146,14 @@ return {
 		{
 			"<leader>sg",
 			function()
-				Snacks.picker.live_grep()
+				Snacks.picker.grep()
 			end,
 			desc = "Grep (Root Dir)",
 		},
 		{
 			"<leader>sG",
 			function()
-				Snacks.picker.live_grep({ root = false })
+				Snacks.picker.grep({ root = false })
 			end,
 			desc = "Grep (cwd)",
 		},
