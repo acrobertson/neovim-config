@@ -7,3 +7,4 @@ require("config.keymaps")
 
 -- Lazy-load plugins
 require("lz.n").load("config.plugins")
+require('lzn-auto-require').enable()
