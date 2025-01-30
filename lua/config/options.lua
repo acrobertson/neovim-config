@@ -39,6 +39,9 @@ opt.foldexpr = "v:lua.require'config.util'.ui.foldexpr()"
 opt.foldmethod = "expr"
 opt.foldtext = ""
 
+-- Formatting
+opt.formatoptions = "jcroqlnt" -- tcqj
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 opt.hlsearch = true
 
