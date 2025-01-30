@@ -1,7 +1,6 @@
 return {
 	{
 		"mini.icons",
-		lazy = true,
 
 		beforeAll = function()
 			package.preload["nvim-web-devicons"] = function()

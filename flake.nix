@@ -134,7 +134,6 @@
             gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
               lz-n
-              lzn-auto-require
               plenary-nvim
               snacks-nvim
               tokyonight-nvim
