@@ -101,6 +101,7 @@ return {
 				virtual_text = false,
 				virtual_lines = {
 					highlight_whole_line = false,
+					only_current_line = true,
 				},
 			})
 
