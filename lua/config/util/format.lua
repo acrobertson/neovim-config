@@ -23,14 +23,6 @@ function M.register(formatter)
 	end)
 end
 
--- function M.formatexpr()
--- 	-- TODO: enable after setting up conform
--- 	if LazyVim.has("conform.nvim") then
--- 		return require("conform").formatexpr()
--- 	end
--- 	return vim.lsp.formatexpr({ timeout_ms = 3000 })
--- end
-
 ---@param buf? number
 ---@return (Formatter|{active:boolean,resolved:string[]})[]
 function M.resolve(buf)

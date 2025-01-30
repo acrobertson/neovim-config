@@ -17,22 +17,37 @@ return {
 		},
 
 		after = function()
-			require("conform").setup({
+			---@type conform.setupOpts
+			local opts = {
 				default_format_opts = {
 					timeout_ms = 3000,
 					async = false,
 					quiet = false,
 					lsp_format = "fallback",
 				},
+				-- NOTE: this omits builtin prettier filetypes, which will be inserted below
 				formatters_by_ft = {
 					lua = { "stylua" },
 					nix = { "nixfmt" },
+					blade = { "prettier" },
+					twig = { "prettier" },
 				},
-				---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
 				formatters = {
 					injected = { options = { ignore_errors = true } },
+					prettier = {
+						condition = function(config, ctx)
+							return Config.prettier.has_parser(config, ctx)
+								and Config.prettier.has_config(config, ctx)
+						end,
+					},
 				},
-			})
+			}
+
+			for _, ft in ipairs(Config.prettier.builtin_filetypes) do
+				opts.formatters_by_ft[ft] = { "prettier" }
+			end
+
+			require("conform").setup(opts)
 
 			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
