@@ -108,17 +108,23 @@ function M.get_capabilities()
 	return capabilities
 end
 
-function M.formatter()
+---@param opts? Formatter| {filter?: (string|lsp.Client.filter)}
+function M.formatter(opts)
+	---@type Formatter
+	opts = opts or {}
+	local filter = opts.filter or {}
+	filter = type(filter) == "string" and { name = filter } or filter
+	---@cast filter lsp.Client.filter
 	---@type Formatter
 	local ret = {
 		name = "LSP",
 		primary = true,
 		priority = 1,
 		format = function(buf)
-			M.format({ bufnr = buf })
+			M.format(vim.tbl_deep_extend("force", filter, { bufnr = buf }))
 		end,
 		sources = function(buf)
-			local clients = vim.lsp.get_clients({ bufnr = buffer })
+			local clients = vim.lsp.get_clients(vim.tbl_deep_extend("force", filter, { bufnr = buf }))
 			---@param client vim.lsp.Client
 			local ret = vim.tbl_filter(function(client)
 				return client.supports_method("textDocument/formatting")
@@ -130,7 +136,7 @@ function M.formatter()
 			end, ret)
 		end,
 	}
-	return ret
+	return vim.tbl_deep_extend("force", ret, opts) --[[@as Formatter]]
 end
 
 ---@alias lsp.Client.format {timeout_ms?: number, format_options?: table} | lsp.Client.filter
@@ -164,5 +170,42 @@ M.action = setmetatable({}, {
 		end
 	end,
 })
+
+---@type table<string, string[]|boolean>?
+M.kind_filter = {
+	default = {
+		"Class",
+		"Constructor",
+		"Enum",
+		"Field",
+		"Function",
+		"Interface",
+		"Method",
+		"Module",
+		"Namespace",
+		"Package",
+		"Property",
+		"Struct",
+		"Trait",
+	},
+	markdown = false,
+	help = false,
+	-- you can specify a different filter for each filetype
+	lua = {
+		"Class",
+		"Constructor",
+		"Enum",
+		"Field",
+		"Function",
+		"Interface",
+		"Method",
+		"Module",
+		"Namespace",
+		-- "Package", -- remove package since luals uses it for control flow structures
+		"Property",
+		"Struct",
+		"Trait",
+	},
+}
 
 return M
