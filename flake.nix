@@ -126,6 +126,8 @@
               # lua
               lua-language-server
               stylua
+              # web
+              vscode-langservers-extracted
             ];
           };
 
@@ -161,6 +163,7 @@
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
               todo-comments-nvim
+              # trouble-nvim
               ts-comments-nvim
               typescript-tools-nvim
               which-key-nvim

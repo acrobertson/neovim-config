@@ -1,5 +1,16 @@
 local servers = {}
 
+servers.eslint = {
+	-- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+	workingDirectories = { mode = "auto" },
+	format = true,
+	-- NOTE: try these if things get slow
+	-- flags = {
+	-- 	allow_incremental_sync = false,
+	-- 	debounce_text_changes = 1000,
+	-- },
+}
+
 servers.lua_ls = {
 	Lua = {
 		workspace = {
@@ -87,6 +98,12 @@ return {
 		after = function()
 			-- Set up auto-format
 			Config.format.register(Config.lsp.formatter())
+			Config.format.register(Config.lsp.formatter({
+				name = "eslint: lsp",
+				primary = false,
+				priority = 200,
+				filter = "eslint",
+			}))
 
 			-- Set up keymaps
 			Config.lsp.on_attach(function(client, buffer)
