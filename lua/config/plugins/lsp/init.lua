@@ -149,6 +149,31 @@ return {
 					root_pattern = (cfg or {}).root_pattern,
 				})
 			end
+
+			require("lz.n").trigger_load("typescript-tools.nvim")
+		end,
+	},
+
+	{
+		"typescript-tools.nvim",
+		lazy = true,
+		-- event = "DeferredUIEnter",
+		after = function()
+			require("typescript-tools").setup({
+				expose_as_code_action = "all",
+				---@see https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3439 for available preferencesaa
+				tsserver_file_preferences = {
+					-- TODO: get inlay hints working
+					includeInlayParameterNameHints = "literals",
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayVariableTypeHints = false,
+					includeInlayPropertyDeclarationTypeHints = false,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayEnumMemberValueHints = false,
+					includeCompletionsForModuleExports = true,
+				},
+				complete_function_calls = true,
+			})
 		end,
 	},
 

@@ -162,6 +162,7 @@
               nvim-treesitter-textobjects
               todo-comments-nvim
               ts-comments-nvim
+              typescript-tools-nvim
               which-key-nvim
               yazi-nvim
             ];
