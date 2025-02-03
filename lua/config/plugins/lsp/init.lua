@@ -3,6 +3,28 @@ local servers = {
 	cssls = {},
 }
 
+-- TODO: set up `nvim-emmet`
+servers.emmet_language_server = {
+	filetypes = {
+		"astro",
+		"css",
+		"eruby",
+		"heex",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"less",
+		"php",
+		"sass",
+		"scss",
+		"svelte",
+		"pug",
+		"twig",
+		"typescriptreact",
+		"vue",
+	},
+}
+
 servers.eslint = {
 	-- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
 	workingDirectories = { mode = "auto" },

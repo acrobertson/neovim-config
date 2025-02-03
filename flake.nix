@@ -127,6 +127,7 @@
               lua-language-server
               stylua
               # web
+              emmet-language-server
               typescript
               vscode-langservers-extracted
             ];
