@@ -11,6 +11,12 @@ vim.g.snacks_animate = false
 -- Show the current document symbols location from Trouble in lualine
 vim.g.trouble_lualine = true
 
+-- Appropriately highlight `denols` codefences
+---@see https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#denols
+vim.g.markdown_fenced_languages = {
+	"ts=typescript",
+}
+
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.
 vim.schedule(function()

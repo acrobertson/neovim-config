@@ -1,6 +1,7 @@
 local servers = {
 	html = {},
 	cssls = {},
+	denols = {},
 }
 
 -- TODO: set up `nvim-emmet`
@@ -213,6 +214,18 @@ return {
 			end
 
 			require("lz.n").trigger_load("typescript-tools.nvim")
+
+			-- Prevent Deno and Typescript LSPs from conflicting
+			if Config.lsp.is_enabled("denols") and Config.lsp.is_enabled("typescript-tools") then
+				local is_deno = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
+				Config.lsp.disable("typescript-tools", is_deno)
+				Config.lsp.disable("denols", function(root_dir, config)
+					if not is_deno(root_dir) then
+						config.settings.deno.enable = false
+					end
+					return false
+				end)
+			end
 		end,
 	},
 
