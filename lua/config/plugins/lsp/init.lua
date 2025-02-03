@@ -2,6 +2,7 @@ local servers = {
 	html = {},
 	cssls = {},
 	denols = {},
+	phpactor = {},
 }
 
 -- TODO: set up `nvim-emmet`

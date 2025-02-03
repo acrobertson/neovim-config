@@ -30,6 +30,7 @@ return {
 					lua = { "stylua" },
 					nix = { "nixfmt" },
 					blade = { "prettier" },
+					php = { "pint" },
 					twig = { "prettier" },
 				},
 				formatters = {

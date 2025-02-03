@@ -126,6 +126,8 @@
               # lua
               lua-language-server
               stylua
+              # php
+              phpactor
               # web
               emmet-language-server
               tailwindcss-language-server
