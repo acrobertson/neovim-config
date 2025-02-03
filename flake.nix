@@ -127,6 +127,7 @@
               lua-language-server
               stylua
               # web
+              typescript
               vscode-langservers-extracted
             ];
           };
