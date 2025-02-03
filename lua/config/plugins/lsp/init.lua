@@ -118,6 +118,15 @@ if nixCats.extra("nixdExtras.flake-path") then
 	end
 end
 
+servers.tailwindcss = {
+	filetypes_exclude = { "markdown" },
+	includeLanguages = {
+		elixir = "html-eex",
+		eelixir = "html-eex",
+		heex = "html-eex",
+	},
+}
+
 return {
 	{
 		"nvim-lspconfig",

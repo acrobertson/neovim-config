@@ -128,6 +128,7 @@
               stylua
               # web
               emmet-language-server
+              tailwindcss-language-server
               typescript
               vscode-langservers-extracted
             ];
