@@ -1,4 +1,7 @@
-local servers = {}
+local servers = {
+	html = {},
+	cssls = {},
+}
 
 servers.eslint = {
 	-- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
@@ -9,6 +12,16 @@ servers.eslint = {
 	-- 	allow_incremental_sync = false,
 	-- 	debounce_text_changes = 1000,
 	-- },
+}
+
+-- TODO: integrate `schemastore`
+servers.jsonls = {
+	json = {
+		format = {
+			enable = true,
+		},
+		validate = { enable = true },
+	},
 }
 
 servers.lua_ls = {
