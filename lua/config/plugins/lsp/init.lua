@@ -129,6 +129,17 @@ servers.tailwindcss = {
 	},
 }
 
+servers.yamlls = {
+	-- TODO: capabilities
+	yaml = {
+		keyOrdering = false,
+		format = {
+			enable = true,
+		},
+		validate = true,
+	},
+}
+
 return {
 	{
 		"nvim-lspconfig",

@@ -128,6 +128,8 @@
               stylua
               # php
               phpactor
+              # schemas
+              yaml-language-server
               # web
               emmet-language-server
               tailwindcss-language-server
