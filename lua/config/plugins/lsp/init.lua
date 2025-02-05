@@ -1,8 +1,15 @@
 local servers = {
 	html = {},
-	cssls = {},
 	denols = {},
 	phpactor = {},
+}
+
+servers.cssls = {
+	css = {
+		lint = {
+			unknownAtRules = "ignore",
+		},
+	},
 }
 
 -- TODO: set up `nvim-emmet`
