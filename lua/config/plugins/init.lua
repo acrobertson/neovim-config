@@ -11,6 +11,7 @@ return {
 	require("config.plugins.git"),
 	require("config.plugins.completion"),
 	require("config.plugins.statusline"),
+	require("config.plugins.tabline"),
 	require("config.plugins.autopairs"),
 	require("config.plugins.comments"),
 	require("config.plugins.surround"),

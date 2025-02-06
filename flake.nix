@@ -169,6 +169,7 @@
               neogit
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
+              tabby-nvim
               todo-comments-nvim
               # trouble-nvim
               ts-comments-nvim
