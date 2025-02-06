@@ -108,9 +108,6 @@ opt.breakindent = true
 -- Don't show mode since we have a statusline
 opt.showmode = false
 
--- Always show tabline
-opt.showtabline = 2
-
 opt.shortmess:append({ W = true, I = true, c = true, C = true })
 
 -- Always show the signcolumn; otherwise, it would shift the text each time
