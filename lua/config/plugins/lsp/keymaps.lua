@@ -126,6 +126,24 @@ M._keys = {
 			return Snacks.words.is_enabled()
 		end,
 	},
+	{
+		"<leader>ss",
+		function()
+			---@diagnostic disable-next-line: missing-fields
+			Snacks.picker.lsp_symbols({ filter = Config.lsp.kind_filter })
+		end,
+		desc = "LSP Symbols",
+		has = "documentSymbol",
+	},
+	{
+		"<leader>sS",
+		function()
+			---@diagnostic disable-next-line: missing-fields
+			Snacks.picker.lsp_workspace_symbols({ filter = Config.lsp.kind_filter })
+		end,
+		desc = "LSP Workspace Symbols",
+		has = "workspace/symbols",
+	},
 }
 
 ---@param method string|string[]
