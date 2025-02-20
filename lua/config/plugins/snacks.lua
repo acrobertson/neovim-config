@@ -225,6 +225,13 @@ return {
 			desc = "Highlights",
 		},
 		{
+			"<leader>si",
+			function()
+				Snacks.picker.icons()
+			end,
+			desc = "Icons",
+		},
+		{
 			"<leader>sj",
 			function()
 				Snacks.picker.jumps()
