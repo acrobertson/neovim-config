@@ -132,8 +132,12 @@
               stylua
               # php
               phpactor
+              # rust
+              rust-analyzer
               # schemas
               yaml-language-server
+              # twig
+              twig-language-server
               # web
               emmet-language-server
               tailwindcss-language-server
@@ -161,6 +165,7 @@
             general = with pkgs.vimPlugins; [
               blink-cmp
               conform-nvim
+              crates-nvim
               flash-nvim
               gitsigns-nvim
               lsp_lines-nvim
@@ -173,6 +178,7 @@
               neogit
               nvim-treesitter.withAllGrammars
               nvim-treesitter-textobjects
+              rustaceanvim
               tabby-nvim
               todo-comments-nvim
               # trouble-nvim
