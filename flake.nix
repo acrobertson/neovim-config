@@ -38,6 +38,10 @@
     # for specific tags, branches and commits, see:
     # https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-flake.html#examples
 
+    "plugins-flexoki-nvim" = {
+      url = "github:nuvic/flexoki-nvim";
+      flake = false;
+    };
   };
 
   # see :help nixCats.flake.outputs
@@ -140,7 +144,7 @@
 
           # This is for plugins that will load at startup without using packadd:
           startupPlugins = {
-            gitPlugins = with pkgs.neovimPlugins; [ ];
+            gitPlugins = with pkgs.neovimPlugins; [ flexoki-nvim ];
             general = with pkgs.vimPlugins; [
               lz-n
               plenary-nvim
