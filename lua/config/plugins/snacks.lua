@@ -4,6 +4,7 @@ return {
 	lazy = false,
 
 	after = function()
+		---@diagnostic disable-next-line: missing-fields
 		require("snacks").setup({
 			bigfile = { enabled = true },
 
@@ -19,8 +20,7 @@ return {
 
 			toggle = { enabled = true },
 
-			-- TODO: enable after LSP is setup
-			-- words = { enabled = true },
+			words = { enabled = true },
 		})
 	end,
 
