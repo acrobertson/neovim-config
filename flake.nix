@@ -184,6 +184,7 @@
               # trouble-nvim
               ts-comments-nvim
               typescript-tools-nvim
+              vim-tmux-navigator
               which-key-nvim
               yazi-nvim
             ];
