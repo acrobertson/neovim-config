@@ -1,22 +1,3 @@
-# Copyright (c) 2023 BirdeeHub
-# Licensed under the MIT license
-
-# This is an empty nixCats config.
-# you may import this template directly into your nvim folder
-# and then add plugins to categories here,
-# and call the plugins with their default functions
-# within your lua, rather than through the nvim package manager's method.
-# Use the help, and the example config github:BirdeeHub/nixCats-nvim?dir=templates/example
-
-# It allows for easy adoption of nix,
-# while still providing all the extra nix features immediately.
-# Configure in lua, check for a few categories, set a few settings,
-# output packages with combinations of those categories and settings.
-
-# All the same options you make here will be automatically exported in a form available
-# in home manager and in nixosModules, as well as from other flakes.
-# each section is tagged with its relevant help section.
-
 {
   description = "A Lua-natic's neovim flake, with extra cats! nixCats!";
 
@@ -161,7 +142,7 @@
           # not loaded automatically at startup.
           # use with packadd and an autocommand in config to achieve lazy loading
           optionalPlugins = {
-            gitPlugins = with pkgs.neovimPlugins; [ ];
+            # gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
               blink-cmp
               conform-nvim
@@ -245,14 +226,14 @@
         # These are the names of your packages
         # you can include as many as you wish.
         # TODO: change back to `nvim` when the config is ready
-        nvim-new =
+        nvim =
           { pkgs, ... }:
           {
             # they contain a settings set defined above
             # see :help nixCats.flake.outputs.settings
             settings = {
               wrapRc = true;
-              configDirName = "nvim-new";
+              configDirName = "nvim";
               # IMPORTANT:
               # your alias may not conflict with your other packages.
               # aliases = [ "vim" ];
@@ -281,8 +262,8 @@
           {
             settings = {
               wrapRc = false;
-              configDirName = "nvim-new";
-              unwrappedCfgPath = "/Users/alecrobertson/nixcats";
+              configDirName = "nvim";
+              unwrappedCfgPath = "/Users/alecrobertson/neovim-config";
             };
             categories = {
               general = true;
@@ -300,7 +281,7 @@
       };
       # In this section, the main thing you will need to do is change the default package name
       # to the name of the packageDefinitions entry you wish to use as the default.
-      defaultPackageName = "nvim-new";
+      defaultPackageName = "nvim";
     in
 
     # see :help nixCats.flake.outputs.exports
