@@ -4,8 +4,7 @@ Nix-ified neovim configuration.
 
 Take it for a spin with `nix run github:acrobertson/neovim-config`
 
-[!NOTE]
-
+> [!NOTE]
 > Nix is currently required to run this config. Eventually, I'll add a fallback setup for non-Nix environments.
 
 ## Acknowledgements
