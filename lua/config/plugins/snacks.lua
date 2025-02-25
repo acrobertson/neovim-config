@@ -18,6 +18,8 @@ return {
 
 			picker = { enabled = true },
 
+			quickfile = { enabled = true },
+
 			toggle = { enabled = true },
 
 			words = { enabled = true },
