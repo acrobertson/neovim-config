@@ -43,10 +43,6 @@ vim.keymap.set(
 )
 
 -- Buffers
-vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
@@ -106,8 +102,6 @@ vim.keymap.set(
 -- Quickfix
 vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
-vim.keymap.set("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
-vim.keymap.set("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- Formatting
 vim.keymap.set({ "n", "v" }, "<leader>cf", function()
@@ -116,11 +110,12 @@ end)
 
 -- Diagnostics
 local diagnostic_goto = function(next, severity)
-	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
 	severity = severity and vim.diagnostic.severity[severity] or nil
+	local count = next and 1 or -1
 	return function()
 		-- Only open the float automatically if `lsp_lines` is disabled
-		go({ severity = severity, float = not vim.diagnostic.config().virtual_lines })
+		local float = not vim.diagnostic.config().virtual_lines
+		vim.diagnostic.jump({ severity = severity, count = count, float = float })
 	end
 end
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
@@ -159,6 +154,16 @@ Snacks.toggle.indent():map("<leader>ug")
 Snacks.toggle.scroll():map("<leader>uS")
 Snacks.toggle.profiler():map("<leader>dpp")
 Snacks.toggle.profiler_highlights():map("<leader>dph")
+Snacks.toggle({
+	name = "virtual lines",
+	get = function()
+		return vim.diagnostic.config().virtual_lines
+	end,
+	set = function()
+		local new_config = not vim.diagnostic.config().virtual_lines
+		vim.diagnostic.config({ virtual_lines = new_config })
+	end,
+}):map("<leader>uD")
 
 if vim.lsp.inlay_hint then
 	Snacks.toggle.inlay_hints():map("<leader>uh")

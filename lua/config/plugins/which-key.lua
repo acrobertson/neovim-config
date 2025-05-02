@@ -7,6 +7,7 @@ return {
 		---@diagnostic disable-next-line: missing-fields
 		require("which-key").setup({
 			preset = "helix",
+			show_help = false,
 			spec = {
 				{
 					mode = { "n", "v" },
@@ -47,6 +48,10 @@ return {
 					},
 
 					-- Better descriptions
+					{ "[b", desc = "Previous Buffer" },
+					{ "]b", desc = "Next Buffer" },
+					{ "[q", desc = "Previous Quickfix" },
+					{ "]q", desc = "Next Quickfix" },
 					{ "gx", desc = "Open with system app" },
 				},
 

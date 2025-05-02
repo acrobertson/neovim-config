@@ -6,8 +6,6 @@ return {
 	after = function()
 		---@diagnostic disable-next-line: missing-fields
 		require("snacks").setup({
-			bigfile = { enabled = true },
-
 			dashboard = {
 				enabled = true,
 				sections = {
@@ -17,8 +15,6 @@ return {
 			},
 
 			picker = { enabled = true },
-
-			quickfile = { enabled = true },
 
 			toggle = { enabled = true },
 

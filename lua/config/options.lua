@@ -142,3 +142,6 @@ opt.wildmode = "longest:full,full"
 
 -- Minimum window width
 opt.winminwidth = 5
+
+-- Global window border default
+vim.o.winborder = "rounded"

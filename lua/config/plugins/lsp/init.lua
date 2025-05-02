@@ -181,8 +181,7 @@ return {
 			vim.diagnostic.config({
 				virtual_text = false,
 				virtual_lines = {
-					highlight_whole_line = false,
-					only_current_line = true,
+					current_line = true,
 				},
 			})
 
@@ -268,28 +267,6 @@ return {
 				},
 				complete_function_calls = true,
 			})
-		end,
-	},
-
-	{
-		"lsp_lines.nvim",
-		event = {
-			"BufReadPost",
-			"BufNewFile",
-			"BufWritePre",
-		},
-		after = function()
-			require("lsp_lines").setup()
-
-			Snacks.toggle({
-				name = "LSP Lines",
-				get = function()
-					return vim.diagnostic.config().virtual_lines
-				end,
-				set = function()
-					require("lsp_lines").toggle()
-				end,
-			}):map("<leader>uD")
 		end,
 	},
 }
