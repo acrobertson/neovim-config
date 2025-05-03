@@ -176,44 +176,11 @@
 
           # shared libraries to be added to LD_LIBRARY_PATH
           # variable available to nvim runtime
-          sharedLibraries = {
-            general = with pkgs; [
-              # libgit2
-            ];
-          };
-
-          # environmentVariables:
-          # this section is for environmentVariables that should be available
-          # at RUN TIME for plugins. Will be available to path within neovim terminal
-          environmentVariables = {
-            test = {
-              CATTESTVAR = "It worked!";
-            };
-          };
-
-          # If you know what these are, you can provide custom ones by category here.
-          # If you dont, check this link out:
-          # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/setup-hooks/make-wrapper.sh
-          extraWrapperArgs = {
-            test = [
-              ''--set CATTESTVAR2 "It worked again!"''
-            ];
-          };
-
-          # lists of the functions you would have passed to
-          # python.withPackages or lua.withPackages
-
-          # get the path to this python environment
-          # in your lua config via
-          # vim.g.python3_host_prog
-          # or run from nvim terminal via :!<packagename>-python3
-          extraPython3Packages = {
-            test = (_: [ ]);
-          };
-          # populates $LUA_PATH and $LUA_CPATH
-          extraLuaPackages = {
-            test = [ (_: [ ]) ];
-          };
+          # sharedLibraries = {
+          #   general = with pkgs; [
+          #     # libgit2
+          #   ];
+          # };
         };
 
       # And then build a package with specific categories from above here:
