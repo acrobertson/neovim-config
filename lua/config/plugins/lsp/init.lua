@@ -136,6 +136,11 @@ servers.tailwindcss = {
 	},
 }
 
+-- NOTE: twiggy LSP isn't in nixpkgs yet
+servers.twiggy_language_server = {
+	cmd = { "twig-language-server", "--stdio" },
+}
+
 servers.yamlls = {
 	-- TODO: capabilities
 	yaml = {
