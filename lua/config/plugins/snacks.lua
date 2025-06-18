@@ -105,18 +105,18 @@ return {
 
 		-- git
 		{
-			"<leader>gc",
-			function()
-				Snacks.picker.git_log()
-			end,
-			desc = "Git Log",
-		},
-		{
 			"<leader>gd",
 			function()
 				Snacks.picker.git_diff()
 			end,
 			desc = "Git Diff (hunks)",
+		},
+		{
+			"<leader>gl",
+			function()
+				Snacks.picker.git_log()
+			end,
+			desc = "Git Log",
 		},
 		{
 			"<leader>gs",
