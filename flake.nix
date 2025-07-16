@@ -124,6 +124,8 @@
               tailwindcss-language-server
               typescript
               vscode-langservers-extracted
+              # clojure
+              joker
             ];
           };
 

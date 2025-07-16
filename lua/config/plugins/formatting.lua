@@ -27,6 +27,7 @@ return {
 				},
 				-- NOTE: this omits builtin prettier filetypes, which will be inserted below
 				formatters_by_ft = {
+					clojure = { "joker" },
 					lua = { "stylua" },
 					nix = { "nixfmt" },
 					blade = { "prettier" },
