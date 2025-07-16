@@ -149,7 +149,6 @@
               crates-nvim
               flash-nvim
               gitsigns-nvim
-              lsp_lines-nvim
               lualine-nvim
               mini-ai
               mini-icons
@@ -192,7 +191,6 @@
       packageDefinitions = {
         # These are the names of your packages
         # you can include as many as you wish.
-        # TODO: change back to `nvim` when the config is ready
         nvim =
           { pkgs, ... }:
           {
