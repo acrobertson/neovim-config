@@ -2,6 +2,7 @@ local servers = {
 	html = {},
 	denols = {},
 	phpactor = {},
+	clojure_lsp = {},
 }
 
 servers.cssls = {

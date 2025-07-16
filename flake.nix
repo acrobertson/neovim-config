@@ -125,6 +125,7 @@
               typescript
               vscode-langservers-extracted
               # clojure
+              clojure-lsp
               joker
             ];
           };
