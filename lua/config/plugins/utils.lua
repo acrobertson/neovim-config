@@ -1,4 +1,6 @@
 return {
+	{ "vim-sleuth", lazy = false },
+
 	{
 		"lazydev.nvim",
 

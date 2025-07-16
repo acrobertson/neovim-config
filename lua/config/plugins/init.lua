@@ -1,6 +1,5 @@
 return {
-	{ "vim-sleuth" },
-	require("config.plugins.lazydev"),
+	require("config.plugins.utils"),
 	require("config.plugins.colorscheme"),
 	require("config.plugins.icons"),
 	require("config.plugins.snacks"),
