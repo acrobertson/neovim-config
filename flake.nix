@@ -149,6 +149,7 @@
               crates-nvim
               flash-nvim
               gitsigns-nvim
+              grug-far-nvim
               lualine-nvim
               mini-ai
               mini-icons

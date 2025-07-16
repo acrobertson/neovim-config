@@ -15,6 +15,7 @@ return {
 	require("config.plugins.comments"),
 	require("config.plugins.surround"),
 	require("config.plugins.text-objects"),
+	require("config.plugins.find-replace"),
 	require("config.plugins.jump"),
 	require("config.plugins.files"),
 	require("config.plugins.tmux"),
