@@ -66,4 +66,36 @@ return {
 			})
 		end,
 	},
+
+	{
+		"nvim-treesitter-context",
+
+		event = {
+			"BufReadPost",
+			"BufNewFile",
+			"BufWritePre",
+			"DeferredUIEnter",
+		},
+
+		after = function()
+			local tsc = require("treesitter-context")
+
+			tsc.setup({
+				mode = "cursor",
+				max_lines = 3,
+			})
+
+			Snacks.toggle({
+				name = "Treesitter Context",
+				get = tsc.enabled,
+				set = function(state)
+					if state then
+						tsc.enable()
+					else
+						tsc.disable()
+					end
+				end,
+			}):map("<leader>ut")
+		end,
+	},
 }

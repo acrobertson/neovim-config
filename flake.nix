@@ -107,6 +107,7 @@
               nvim-lspconfig
               neogit
               nvim-treesitter.withAllGrammars
+              nvim-treesitter-context
               nvim-treesitter-textobjects
               rustaceanvim
               tabby-nvim

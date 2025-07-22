@@ -44,6 +44,9 @@ return {
 					SnacksDashboardIcon = { fg = "cyan_two" },
 					SnacksDashboardDesc = { fg = "cyan_two" },
 					SnacksDashboardKey = { fg = "orange_two" },
+					-- Treesitter Context
+					TreesitterContextBottom = { underline = true, sp = "highlight_low" },
+					TreesitterContextLineNumberBottom = { underline = true, sp = "highlight_low" },
 					-- Whichkey
 					WhichKey = { fg = "blue_two" },
 					WhichKeyDesc = { fg = "cyan_two" },
