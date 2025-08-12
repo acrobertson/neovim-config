@@ -273,6 +273,16 @@ return {
 				},
 				complete_function_calls = true,
 			})
+
+			require("lz.n").trigger_load("ts-error-translator-nvim")
+		end,
+	},
+
+	{
+		"ts-error-translator-nvim",
+		lazy = true,
+		after = function()
+			require("ts-error-translator").setup()
 		end,
 	},
 }

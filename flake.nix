@@ -14,6 +14,11 @@
       url = "github:nuvic/flexoki-nvim";
       flake = false;
     };
+
+    "plugins-ts-error-translator-nvim" = {
+      url = "github:dmmulroy/ts-error-translator.nvim";
+      flake = false;
+    };
   };
 
   # see :help nixCats.flake.outputs
@@ -91,7 +96,7 @@
 
           # not loaded automatically at startup.
           optionalPlugins = {
-            # gitPlugins = with pkgs.neovimPlugins; [ ];
+            gitPlugins = with pkgs.neovimPlugins; [ ts-error-translator-nvim ];
             general = with pkgs.vimPlugins; [
               blink-cmp
               conform-nvim
