@@ -262,6 +262,7 @@ return {
 				expose_as_code_action = "all",
 				---@see https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3439 for available preferences
 				tsserver_file_preferences = {
+					importModuleSpecifierPreference = "non-relative",
 					-- TODO: get inlay hints working
 					includeInlayParameterNameHints = "literals",
 					includeInlayFunctionParameterTypeHints = true,
