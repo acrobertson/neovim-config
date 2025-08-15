@@ -259,20 +259,21 @@ return {
 		-- event = "DeferredUIEnter",
 		after = function()
 			require("typescript-tools").setup({
-				expose_as_code_action = "all",
-				---@see https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3439 for available preferences
-				tsserver_file_preferences = {
-					importModuleSpecifierPreference = "non-relative",
-					-- TODO: get inlay hints working
-					includeInlayParameterNameHints = "literals",
-					includeInlayFunctionParameterTypeHints = true,
-					includeInlayVariableTypeHints = false,
-					includeInlayPropertyDeclarationTypeHints = false,
-					includeInlayFunctionLikeReturnTypeHints = true,
-					includeInlayEnumMemberValueHints = false,
-					includeCompletionsForModuleExports = true,
+				settings = {
+					expose_as_code_action = "all",
+					---@see https://github.com/microsoft/TypeScript/blob/v5.0.4/src/server/protocol.ts#L3439 for available preferences
+					tsserver_file_preferences = {
+						importModuleSpecifierPreference = "non-relative",
+						includeInlayParameterNameHints = "literals",
+						includeInlayFunctionParameterTypeHints = true,
+						includeInlayVariableTypeHints = false,
+						includeInlayPropertyDeclarationTypeHints = false,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayEnumMemberValueHints = false,
+						includeCompletionsForModuleExports = true,
+					},
+					complete_function_calls = true,
 				},
-				complete_function_calls = true,
 			})
 
 			require("lz.n").trigger_load("ts-error-translator-nvim")
