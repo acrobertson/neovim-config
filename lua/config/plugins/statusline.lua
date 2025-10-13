@@ -18,9 +18,22 @@ return {
 			require("lualine").setup({
 				options = {
 					theme = "auto",
+					component_separators = "",
+					section_separators = "",
 					globalstatus = vim.o.laststatus == 3,
 					disabled_filetypes = {
 						statusline = { "snacks_dashboard" },
+					},
+				},
+				sections = {
+					lualine_c = {
+						{
+							"filename",
+							path = 4, -- Filename and parent dir, with tilde as the home directory
+						},
+					},
+					lualine_x = {
+						"filetype",
 					},
 				},
 			})
