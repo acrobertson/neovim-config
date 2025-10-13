@@ -14,7 +14,17 @@ return {
 				},
 			},
 
-			picker = { enabled = true },
+			picker = {
+				enabled = true,
+				sources = {
+					files = {
+						hidden = true,
+					},
+					grep = {
+						hidden = true,
+					},
+				},
+			},
 
 			toggle = { enabled = true },
 
