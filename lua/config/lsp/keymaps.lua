@@ -21,7 +21,7 @@ local M = {}
 ---@type LSPKeymapSpec[]
 M._keys = {
 	{ "<leader>cl", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
-	{ "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
+	{ "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
 	{ "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
 	{
 		"K",
@@ -29,6 +29,14 @@ M._keys = {
 			return vim.lsp.buf.hover()
 		end,
 		desc = "Hover",
+	},
+	{
+		"gK",
+		function()
+			return vim.lsp.buf.signature_help()
+		end,
+		desc = "Signature Help",
+		has = "signatureHelp",
 	},
 	{
 		"<leader>ca",

@@ -76,6 +76,7 @@
               tailwindcss-language-server
               typescript
               vscode-langservers-extracted
+              vtsls
               # clojure
               clojure-lsp
               joker
@@ -109,7 +110,6 @@
               mini-icons
               mini-pairs
               mini-surround
-              nvim-lspconfig
               neogit
               nvim-treesitter.withAllGrammars
               nvim-treesitter-context
