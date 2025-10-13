@@ -2,7 +2,7 @@ return {
 	-- search/replace in multiple files
 	{
 		"grug-far.nvim",
-		cmd = "GrugFar",
+		cmd = { "GrugFar", "GrugFarWithin" },
 		keys = {
 			{
 				"<leader>sr",
