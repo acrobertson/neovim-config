@@ -31,22 +31,6 @@
         "type": "github"
       }
     },
-    "plugins-flexoki-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1743635018,
-        "narHash": "sha256-vjjAulQVFS+OmpWzLkliqpan3GXlvatdaCnI96bjxC0=",
-        "owner": "nuvic",
-        "repo": "flexoki-nvim",
-        "rev": "079554c242a86be5d1a95598c7c6368d6eedd7a3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nuvic",
-        "repo": "flexoki-nvim",
-        "type": "github"
-      }
-    },
     "plugins-ts-error-translator-nvim": {
       "flake": false,
       "locked": {
@@ -67,7 +51,6 @@
       "inputs": {
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
-        "plugins-flexoki-nvim": "plugins-flexoki-nvim",
         "plugins-ts-error-translator-nvim": "plugins-ts-error-translator-nvim"
       }
     }

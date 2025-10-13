@@ -10,11 +10,6 @@
     #   url = "github:nix-community/neovim-nightly-overlay";
     # };
 
-    "plugins-flexoki-nvim" = {
-      url = "github:nuvic/flexoki-nvim";
-      flake = false;
-    };
-
     "plugins-ts-error-translator-nvim" = {
       url = "github:dmmulroy/ts-error-translator.nvim";
       flake = false;
@@ -85,12 +80,11 @@
 
           # plugins that will load at startup without using packadd
           startupPlugins = {
-            gitPlugins = with pkgs.neovimPlugins; [ flexoki-nvim ];
+            # gitPlugins = with pkgs.neovimPlugins; [ ];
             general = with pkgs.vimPlugins; [
               lz-n
               plenary-nvim
               snacks-nvim
-              tokyonight-nvim
               vim-sleuth
             ];
           };
@@ -117,6 +111,7 @@
               rustaceanvim
               tabby-nvim
               todo-comments-nvim
+              tokyonight-nvim
               # trouble-nvim
               ts-comments-nvim
               vim-tmux-navigator
