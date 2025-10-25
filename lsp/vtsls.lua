@@ -53,6 +53,7 @@ return {
 				},
 			},
 		},
+		-- TODO: copy these to javascript
 		typescript = {
 			updateImportsOnFileMove = { enabled = "always" },
 			suggest = {
@@ -65,6 +66,9 @@ return {
 				parameterTypes = { enabled = true },
 				propertyDeclarationTypes = { enabled = true },
 				variableTypes = { enabled = false },
+			},
+			preferences = {
+				importModuleSpecifier = "non-relative",
 			},
 		},
 	},

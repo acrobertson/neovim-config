@@ -1,7 +1,6 @@
 -- Custom take on Flexoki
 -- https://github.com/kepano/flexoki-neovim
 -- https://github.com/cpplain/flexoki.nvim
--- https://github.com/cpplain/dotfiles/blob/main/home/.config/nvim/colors/flexoki.lua
 
 vim.cmd.highlight("clear")
 vim.g.colors_name = "flexoki"
