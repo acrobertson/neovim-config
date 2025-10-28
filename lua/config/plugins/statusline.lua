@@ -17,7 +17,7 @@ return {
 		after = function()
 			require("lualine").setup({
 				options = {
-					theme = "auto",
+					theme = "flexoki",
 					component_separators = "",
 					section_separators = "",
 					globalstatus = vim.o.laststatus == 3,
