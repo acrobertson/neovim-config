@@ -2,14 +2,34 @@ return {
 	{
 		"conform.nvim",
 
-		event = { "BufWritePre", "DeferredUIEnter" },
 		cmd = "ConformInfo",
 
 		keys = {
 			{
+				"<leader>cf",
+				function(args)
+					local range = nil
+					if args.count ~= -1 then
+						local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+						range = {
+							start = { args.line1, 0 },
+							["end"] = { args.line2, end_line:len() },
+						}
+					end
+					require("conform").format({
+						async = true,
+						lsp_format = "fallback",
+						range = range,
+						timeout_ms = 500,
+					})
+				end,
+				mode = { "n", "v" },
+				desc = "Format buffer or range",
+			},
+			{
 				"<leader>cF",
 				function()
-					require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
+					require("conform").format({ formatters = { "injected" }, timeout_ms = 1000 })
 				end,
 				mode = { "n", "v" },
 				desc = "Format Injected Langs",
@@ -17,57 +37,42 @@ return {
 		},
 
 		after = function()
-			---@type conform.setupOpts
-			local opts = {
+			require("conform").setup({
 				default_format_opts = {
-					timeout_ms = 3000,
+					timeout_ms = 500,
 					async = false,
 					quiet = false,
 					lsp_format = "fallback",
 				},
-				-- NOTE: this omits builtin prettier filetypes, which will be inserted below
 				formatters_by_ft = {
 					clojure = { "joker" },
 					lua = { "stylua" },
 					nix = { "nixfmt" },
-					blade = { "prettier" },
 					php = { "pint" },
+					blade = { "prettier" },
 					twig = { "prettier" },
+					css = { "prettier" },
+					graphql = { "prettier" },
+					html = { "prettier" },
+					javascript = { "prettier" },
+					javascriptreact = { "prettier" },
+					json = { "prettier" },
+					jsonc = { "prettier" },
+					less = { "prettier" },
+					markdown = { "prettier" },
+					["markdown.mdx"] = { "prettier" },
+					scss = { "prettier" },
+					typescript = { "prettier" },
+					typescriptreact = { "prettier" },
+					vue = { "prettier" },
+					yaml = { "prettier" },
 				},
 				formatters = {
 					injected = { options = { ignore_errors = true } },
-					prettier = {
-						condition = function(config, ctx)
-							return Config.prettier.has_parser(config, ctx)
-								and Config.prettier.has_config(config, ctx)
-						end,
-					},
 				},
-			}
-
-			for _, ft in ipairs(Config.prettier.builtin_filetypes) do
-				opts.formatters_by_ft[ft] = { "prettier" }
-			end
-
-			require("conform").setup(opts)
+			})
 
 			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-
-			Config.format.register({
-				name = "conform.nvim",
-				priority = 100,
-				primary = true,
-				format = function(buf)
-					require("conform").format({ bufnr = buf })
-				end,
-				sources = function(buf)
-					local ret = require("conform").list_formatters(buf)
-					---@param v conform.FormatterInfo
-					return vim.tbl_map(function(v)
-						return v.name
-					end, ret)
-				end,
-			})
 		end,
 	},
 }

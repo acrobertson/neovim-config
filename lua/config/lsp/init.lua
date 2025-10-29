@@ -29,9 +29,6 @@ vim.lsp.config("*", {
 })
 
 -- Set up LSP
--- Set up auto-format
-Config.format.register(Config.lsp.formatter())
-
 Config.lsp.on_attach(function(client, buffer)
 	require("config.lsp.keymaps").on_attach(client, buffer)
 end)

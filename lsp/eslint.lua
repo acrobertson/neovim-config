@@ -39,14 +39,6 @@ return {
 		"htmlangular",
 	},
 	workspace_required = true,
-	on_attach = function()
-		Config.format.register(Config.lsp.formatter({
-			name = "eslint: lsp",
-			primary = false,
-			priority = 200,
-			filter = "eslint",
-		}))
-	end,
 	root_dir = function(bufnr, on_dir)
 		-- The project root is where the LSP can be started from
 		-- As stated in the documentation above, this LSP supports monorepos and simple projects.
@@ -177,5 +169,13 @@ return {
 			vim.notify("[lspconfig] Unable to find ESLint library.", vim.log.levels.WARN)
 			return {}
 		end,
+	},
+	commands = {
+		EslintFixAll = {
+			function()
+				require("utils.lsp").eslint_fix_all({ sync = true, bufnr = 0 })
+			end,
+			description = "Fix all eslint problems for this buffer",
+		},
 	},
 }

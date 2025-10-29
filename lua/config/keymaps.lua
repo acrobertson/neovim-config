@@ -100,11 +100,6 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 vim.keymap.set("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
--- Formatting
-vim.keymap.set({ "n", "v" }, "<leader>cf", function()
-	Config.format({ force = true })
-end)
-
 -- Diagnostics
 local diagnostic_goto = function(next, severity)
 	severity = severity and vim.diagnostic.severity[severity] or nil
@@ -124,8 +119,9 @@ vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning"
 vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 -- Toggle options
-Config.format.snacks_toggle():map("<leader>uf")
-Config.format.snacks_toggle(true):map("<leader>uF")
+local formatting_utils = require("utils.formatting")
+formatting_utils.snacks_toggle():map("<leader>uf")
+formatting_utils.snacks_toggle(true):map("<leader>uF")
 Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
 Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
 Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")

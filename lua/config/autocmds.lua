@@ -2,12 +2,38 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup("config_" .. name, { clear = true })
 end
 
--- Set up autoformatting
-vim.api.nvim_create_autocmd("User", {
-	group = augroup("autoformat"),
-	pattern = "DeferredUIEnter",
-	callback = function()
-		Config.format.setup()
+local formatting_utils = require("utils.formatting")
+local lsp_utils = require("utils.lsp")
+
+-- Autoformat and autosave
+vim.api.nvim_create_autocmd({ "BufHidden", "FocusLost", "WinLeave", "CursorHold" }, {
+	group = augroup("autosave"),
+	callback = function(event)
+		if
+			formatting_utils.autoformat_enabled(event.buf)
+			and vim.o.buftype == ""
+			and vim.fn.filereadable(vim.fn.expand("&:p"))
+		then
+			-- Autofix
+			lsp_utils.eslint_fix_all({ bufnr = event.buf })
+
+			-- Autoformat
+			require("lz.n").trigger_load("conform.nvim")
+			require("conform").format({
+				async = true,
+				bufnr = event.buf,
+				lsp_format = "fallback",
+				timeout_ms = 500,
+			}, function()
+				-- Autosave
+				-- TODO: skip autosave for some filetypes?
+				vim.cmd([[
+					silent
+					lockmarks
+					update ++p
+				]])
+			end)
+		end
 	end,
 })
 

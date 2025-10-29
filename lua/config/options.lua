@@ -132,7 +132,7 @@ opt.undofile = true
 opt.undolevels = 10000
 
 -- Save swap file and trigger CursorHold
-opt.updatetime = 200
+opt.updatetime = 2000
 
 -- Allow cursor to move where there is no text in visual block mode
 opt.virtualedit = "block"
