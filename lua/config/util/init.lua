@@ -1,7 +1,5 @@
 ---@class config.util
----@field format config.util.format
 ---@field lsp config.util.lsp
----@field prettier config.util.prettier
 ---@field ui config.util.ui
 ---Config utils
 ---This module is a subset of the LazyVim util module with minor modifications
