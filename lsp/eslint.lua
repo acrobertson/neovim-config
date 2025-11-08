@@ -39,6 +39,7 @@ return {
 		"htmlangular",
 	},
 	workspace_required = true,
+	-- TODO: support when in a nested package.json when the eslint config is at the root
 	root_dir = function(bufnr, on_dir)
 		-- The project root is where the LSP can be started from
 		-- As stated in the documentation above, this LSP supports monorepos and simple projects.
@@ -59,7 +60,7 @@ return {
 			type = "file",
 			limit = 1,
 			upward = true,
-			stop = vim.fs.dirname(project_root),
+			stop = vim.fs.dirname(project_root), -- maybe remove this to support workspaces?
 		})[1]
 		if not is_buffer_using_eslint then
 			return
