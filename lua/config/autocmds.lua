@@ -11,8 +11,8 @@ vim.api.nvim_create_autocmd({ "BufHidden", "FocusLost", "WinLeave", "CursorHold"
 	callback = function(event)
 		if
 			formatting_utils.autoformat_enabled(event.buf)
-			and vim.o.buftype == ""
-			and vim.fn.filereadable(vim.fn.expand("&:p"))
+			and vim.api.nvim_get_option_value("buftype", { buf = event.buf }) == ""
+			and vim.fn.filereadable(event.file)
 		then
 			-- Autofix
 			lsp_utils.eslint_fix_all({ bufnr = event.buf })
