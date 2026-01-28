@@ -39,12 +39,6 @@ opt.confirm = true
 -- Highlight the screen line of the cursor
 opt.cursorline = true
 
--- Folds
-opt.foldlevel = 99
-opt.foldexpr = "v:lua.require'config.util'.ui.foldexpr()"
-opt.foldmethod = "expr"
-opt.foldtext = ""
-
 -- Formatting
 opt.formatoptions = "jcroqlnt" -- tcqj
 
