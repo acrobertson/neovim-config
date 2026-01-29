@@ -15,7 +15,12 @@ return {
 				"S",
 				mode = { "n", "o", "x" },
 				function()
-					require("flash").treesitter()
+					require("flash").treesitter({
+						actions = {
+							["<c-space>"] = "next",
+							["<BS>"] = "prev",
+						},
+					})
 				end,
 				desc = "Flash Treesitter",
 			},
