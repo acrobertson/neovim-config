@@ -3,7 +3,7 @@
 -- MIT license
 
 -- Flexoki colors
-local c = require("flexoki").c
+local c = require("flexoki").get(vim.o.background)
 
 return {
 	normal = {

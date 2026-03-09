@@ -6,7 +6,7 @@ vim.cmd.highlight("clear")
 vim.g.colors_name = "flexoki"
 
 -- Flexoki colors
-local c = require("flexoki").c
+local c = require("flexoki").get(vim.o.background)
 
 -- Highlights
 local function hl(name, val)

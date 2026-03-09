@@ -3,238 +3,424 @@
 -- https://github.com/cpplain/flexoki.nvim
 -- MIT License
 
+---@alias flexoki.Theme "dark" | "light"
+
+---All color values are hex strings (e.g. "#100F0F")
+---@class flexoki.PaletteColors
+---@field black string
+---@field base950 string
+---@field base900 string
+---@field base850 string
+---@field base800 string
+---@field base700 string
+---@field base600 string
+---@field base500 string
+---@field base400 string
+---@field base300 string
+---@field base200 string
+---@field base150 string
+---@field base100 string
+---@field base50 string
+---@field paper string
+---@field red950 string
+---@field red900 string
+---@field red850 string
+---@field red800 string
+---@field red700 string
+---@field red600 string
+---@field red500 string
+---@field red400 string
+---@field red300 string
+---@field red200 string
+---@field red150 string
+---@field red100 string
+---@field red50 string
+---@field orange950 string
+---@field orange900 string
+---@field orange850 string
+---@field orange800 string
+---@field orange700 string
+---@field orange600 string
+---@field orange500 string
+---@field orange400 string
+---@field orange300 string
+---@field orange200 string
+---@field orange150 string
+---@field orange100 string
+---@field orange50 string
+---@field yellow950 string
+---@field yellow900 string
+---@field yellow850 string
+---@field yellow800 string
+---@field yellow700 string
+---@field yellow600 string
+---@field yellow500 string
+---@field yellow400 string
+---@field yellow300 string
+---@field yellow200 string
+---@field yellow150 string
+---@field yellow100 string
+---@field yellow50 string
+---@field green950 string
+---@field green900 string
+---@field green850 string
+---@field green800 string
+---@field green700 string
+---@field green600 string
+---@field green500 string
+---@field green400 string
+---@field green300 string
+---@field green200 string
+---@field green150 string
+---@field green100 string
+---@field green50 string
+---@field cyan950 string
+---@field cyan900 string
+---@field cyan850 string
+---@field cyan800 string
+---@field cyan700 string
+---@field cyan600 string
+---@field cyan500 string
+---@field cyan400 string
+---@field cyan300 string
+---@field cyan200 string
+---@field cyan150 string
+---@field cyan100 string
+---@field cyan50 string
+---@field blue950 string
+---@field blue900 string
+---@field blue850 string
+---@field blue800 string
+---@field blue700 string
+---@field blue600 string
+---@field blue500 string
+---@field blue400 string
+---@field blue300 string
+---@field blue200 string
+---@field blue150 string
+---@field blue100 string
+---@field blue50 string
+---@field purple950 string
+---@field purple900 string
+---@field purple850 string
+---@field purple800 string
+---@field purple700 string
+---@field purple600 string
+---@field purple500 string
+---@field purple400 string
+---@field purple300 string
+---@field purple200 string
+---@field purple150 string
+---@field purple100 string
+---@field purple50 string
+---@field magenta950 string
+---@field magenta900 string
+---@field magenta850 string
+---@field magenta800 string
+---@field magenta700 string
+---@field magenta600 string
+---@field magenta500 string
+---@field magenta400 string
+---@field magenta300 string
+---@field magenta200 string
+---@field magenta150 string
+---@field magenta100 string
+---@field magenta50 string
+
+---@class flexoki.ThemeColors
+---@field bg string Main background
+---@field bg2 string Secondary background (sidebars, panels)
+---@field ui string Borders, hover surfaces
+---@field ui2 string Hovered borders, cursor line background
+---@field ui3 string Active borders, indent guides
+---@field tx string Primary text, cursor, variables
+---@field tx2 string Muted text, parameters, matching brackets
+---@field tx3 string Faint text, comments, disabled elements, whitespace markers
+---@field red string Primary accent - text, borders, icons
+---@field red2 string Secondary accent - alternative states
+---@field red3 string Background accent - search highlighting, badges
+---@field red4 string Subtle background - selection, diff backgrounds
+---@field orange string Primary accent - text, borders, icons
+---@field orange2 string Secondary accent - alternative states
+---@field orange3 string Background accent - search highlighting, badges
+---@field orange4 string Subtle background - selection, diff backgrounds
+---@field yellow string Primary accent - text, borders, icons
+---@field yellow2 string Secondary accent - alternative states
+---@field yellow3 string Background accent - search highlighting, badges
+---@field yellow4 string Subtle background - selection, diff backgrounds
+---@field green string Primary accent - text, borders, icons
+---@field green2 string Secondary accent - alternative states
+---@field green3 string Background accent - search highlighting, badges
+---@field green4 string Subtle background - selection, diff backgrounds
+---@field cyan string Primary accent - text, borders, icons
+---@field cyan2 string Secondary accent - alternative states
+---@field cyan3 string Background accent - search highlighting, badges
+---@field cyan4 string Subtle background - selection, diff backgrounds
+---@field blue string Primary accent - text, borders, icons
+---@field blue2 string Secondary accent - alternative states
+---@field blue3 string Background accent - search highlighting, badges
+---@field blue4 string Subtle background - selection, diff backgrounds
+---@field purple string Primary accent - text, borders, icons
+---@field purple2 string Secondary accent - alternative states
+---@field purple3 string Background accent - search highlighting, badges
+---@field purple4 string Subtle background - selection, diff backgrounds
+---@field magenta string Primary accent - text, borders, icons
+---@field magenta2 string Secondary accent - alternative states
+---@field magenta3 string Background accent - search highlighting, badges
+---@field magenta4 string Subtle background - selection, diff backgrounds
+
 local M = {}
 
--- Flexoki palette
-local p = {}
+---@return flexoki.PaletteColors
+function M.all()
+	return {
+		-- Base colors
+		black = "#100F0F",
+		base950 = "#1C1B1A",
+		base900 = "#282726",
+		base850 = "#343331",
+		base800 = "#403E3C",
+		base700 = "#575653",
+		base600 = "#6F6E69",
+		base500 = "#878580",
+		base400 = "#9F9D96",
+		base300 = "#B7B5AC",
+		base200 = "#CECDC3",
+		base150 = "#DAD8CE",
+		base100 = "#E6E4D9",
+		base50 = "#F2F0E5",
+		paper = "#FFFCF0",
 
--- Base
-p.black = "#100F0F"
-p.base950 = "#1C1B1A"
-p.base900 = "#282726"
-p.base850 = "#343331"
-p.base800 = "#403E3C"
-p.base700 = "#575653"
-p.base600 = "#6F6E69"
-p.base500 = "#878580"
-p.base400 = "#9F9D96"
-p.base300 = "#B7B5AC"
-p.base200 = "#CECDC3"
-p.base150 = "#DAD8CE"
-p.base100 = "#E6E4D9"
-p.base50 = "#F2F0E5"
-p.paper = "#FFFCF0"
+		-- Red
+		red950 = "#261312",
+		red900 = "#3E1715",
+		red850 = "#551B18",
+		red800 = "#6C201C",
+		red700 = "#942822",
+		red600 = "#AF3029",
+		red500 = "#C03E35",
+		red400 = "#D14D41",
+		red300 = "#E8705F",
+		red200 = "#F89A8A",
+		red150 = "#FDB2A2",
+		red100 = "#FFCABB",
+		red50 = "#FFE1D5",
 
--- Red
-p.red950 = "#261312"
-p.red900 = "#3E1715"
-p.red850 = "#551B18"
-p.red800 = "#6C201C"
-p.red700 = "#942822"
-p.red600 = "#AF3029"
-p.red500 = "#C03E35"
-p.red400 = "#D14D41"
-p.red300 = "#E8705F"
-p.red200 = "#F89A8A"
-p.red150 = "#FDB2A2"
-p.red100 = "#FFCABB"
-p.red50 = "#FFE1D5"
+		-- Orange
+		orange950 = "#27180E",
+		orange900 = "#40200D",
+		orange850 = "#59290D",
+		orange800 = "#71320D",
+		orange700 = "#9D4310",
+		orange600 = "#BC5215",
+		orange500 = "#CB6120",
+		orange400 = "#DA702C",
+		orange300 = "#EC8B49",
+		orange200 = "#F9AE77",
+		orange150 = "#FCC192",
+		orange100 = "#FED3AF",
+		orange50 = "#FFE7CE",
 
--- Orange
-p.orange950 = "#27180E"
-p.orange900 = "#40200D"
-p.orange850 = "#59290D"
-p.orange800 = "#71320D"
-p.orange700 = "#9D4310"
-p.orange600 = "#BC5215"
-p.orange500 = "#CB6120"
-p.orange400 = "#DA702C"
-p.orange300 = "#EC8B49"
-p.orange200 = "#F9AE77"
-p.orange150 = "#FCC192"
-p.orange100 = "#FED3AF"
-p.orange50 = "#FFE7CE"
+		-- Yellow
+		yellow950 = "#241E08",
+		yellow900 = "#3A2D04",
+		yellow850 = "#503D02",
+		yellow800 = "#664D01",
+		yellow700 = "#8E6B01",
+		yellow600 = "#AD8301",
+		yellow500 = "#BE9207",
+		yellow400 = "#D0A215",
+		yellow300 = "#DFB431",
+		yellow200 = "#ECCB60",
+		yellow150 = "#F1D67E",
+		yellow100 = "#F6E2A0",
+		yellow50 = "#FAEEC6",
 
--- Yellow
-p.yellow950 = "#241E08"
-p.yellow900 = "#3A2D04"
-p.yellow850 = "#503D02"
-p.yellow800 = "#664D01"
-p.yellow700 = "#8E6B01"
-p.yellow600 = "#AD8301"
-p.yellow500 = "#BE9207"
-p.yellow400 = "#D0A215"
-p.yellow300 = "#DFB431"
-p.yellow200 = "#ECCB60"
-p.yellow150 = "#F1D67E"
-p.yellow100 = "#F6E2A0"
-p.yellow50 = "#FAEEC6"
+		-- Green
+		green950 = "#1A1E0C",
+		green900 = "#252D09",
+		green850 = "#313D07",
+		green800 = "#3D4C07",
+		green700 = "#536907",
+		green600 = "#66800B",
+		green500 = "#768D21",
+		green400 = "#879A39",
+		green300 = "#A0AF54",
+		green200 = "#BEC97E",
+		green150 = "#CDD597",
+		green100 = "#DDE2B2",
+		green50 = "#EDEECF",
 
--- Green
-p.green950 = "#1A1E0C"
-p.green900 = "#252D09"
-p.green850 = "#313D07"
-p.green800 = "#3D4C07"
-p.green700 = "#536907"
-p.green600 = "#66800B"
-p.green500 = "#768D21"
-p.green400 = "#879A39"
-p.green300 = "#A0AF54"
-p.green200 = "#BEC97E"
-p.green150 = "#CDD597"
-p.green100 = "#DDE2B2"
-p.green50 = "#EDEECF"
+		-- Cyan
+		cyan950 = "#101F1D",
+		cyan900 = "#122F2C",
+		cyan850 = "#143F3C",
+		cyan800 = "#164F4A",
+		cyan700 = "#1C6C66",
+		cyan600 = "#24837B",
+		cyan500 = "#2F968D",
+		cyan400 = "#3AA99F",
+		cyan300 = "#5ABDAC",
+		cyan200 = "#87D3C3",
+		cyan150 = "#A2DECE",
+		cyan100 = "#BFE8D9",
+		cyan50 = "#DDF1E4",
 
--- Cyan
-p.cyan950 = "#101F1D"
-p.cyan900 = "#122F2C"
-p.cyan850 = "#143F3C"
-p.cyan800 = "#164F4A"
-p.cyan700 = "#1C6C66"
-p.cyan600 = "#24837B"
-p.cyan500 = "#2F968D"
-p.cyan400 = "#3AA99F"
-p.cyan300 = "#5ABDAC"
-p.cyan200 = "#87D3C3"
-p.cyan150 = "#A2DECE"
-p.cyan100 = "#BFE8D9"
-p.cyan50 = "#DDF1E4"
+		-- Blue
+		blue950 = "#101A24",
+		blue900 = "#12253B",
+		blue850 = "#133051",
+		blue800 = "#163B66",
+		blue700 = "#1A4F8C",
+		blue600 = "#205EA6",
+		blue500 = "#3171B2",
+		blue400 = "#4385BE",
+		blue300 = "#66A0C8",
+		blue200 = "#92BFDB",
+		blue150 = "#ABCFE2",
+		blue100 = "#C6DDE8",
+		blue50 = "#E1ECEB",
 
--- Blue
-p.blue950 = "#101A24"
-p.blue900 = "#12253B"
-p.blue850 = "#133051"
-p.blue800 = "#163B66"
-p.blue700 = "#1A4F8C"
-p.blue600 = "#205EA6"
-p.blue500 = "#3171B2"
-p.blue400 = "#4385BE"
-p.blue300 = "#66A0C8"
-p.blue200 = "#92BFDB"
-p.blue150 = "#ABCFE2"
-p.blue100 = "#C6DDE8"
-p.blue50 = "#E1ECEB"
+		-- Purple
+		purple950 = "#1A1623",
+		purple900 = "#261C39",
+		purple850 = "#31234E",
+		purple800 = "#3C2A62",
+		purple700 = "#4F3685",
+		purple600 = "#5E409D",
+		purple500 = "#735EB5",
+		purple400 = "#8B7EC8",
+		purple300 = "#A699D0",
+		purple200 = "#C4B9E0",
+		purple150 = "#D3CAE6",
+		purple100 = "#E2D9E9",
+		purple50 = "#F0EAEC",
 
--- Purple
-p.purple950 = "#1A1623"
-p.purple900 = "#261C39"
-p.purple850 = "#31234E"
-p.purple800 = "#3C2A62"
-p.purple700 = "#4F3685"
-p.purple600 = "#5E409D"
-p.purple500 = "#735EB5"
-p.purple400 = "#8B7EC8"
-p.purple300 = "#A699D0"
-p.purple200 = "#C4B9E0"
-p.purple150 = "#D3CAE6"
-p.purple100 = "#E2D9E9"
-p.purple50 = "#F0EAEC"
-
--- Magenta
-p.magenta950 = "#24131D"
-p.magenta900 = "#39172B"
-p.magenta850 = "#4F1B39"
-p.magenta800 = "#641F46"
-p.magenta700 = "#87285E"
-p.magenta600 = "#A02F6F"
-p.magenta500 = "#B74583"
-p.magenta400 = "#CE5D97"
-p.magenta300 = "#E47DA8"
-p.magenta200 = "#F4A4C2"
-p.magenta150 = "#F9B9CF"
-p.magenta100 = "#FCCFDA"
-p.magenta50 = "#FEE4E5"
-
--- Theme colors
-local c = {}
-
-if vim.o.background == "dark" then
-	-- Dark theme
-	c.bg = p.black
-	c.bg2 = p.base950
-	c.ui = p.base900
-	c.ui2 = p.base850
-	c.ui3 = p.base800
-	c.tx = p.base200
-	c.tx2 = p.base400
-	c.tx3 = p.base600
-	c.red = p.red400
-	c.red2 = p.red600
-	c.red3 = p.red800
-	c.red4 = p.red900
-	c.orange = p.orange400
-	c.orange2 = p.orange600
-	c.orange3 = p.orange800
-	c.orange4 = p.orange900
-	c.yellow = p.yellow400
-	c.yellow2 = p.yellow600
-	c.yellow3 = p.yellow800
-	c.yellow4 = p.yellow900
-	c.green = p.green400
-	c.green2 = p.green600
-	c.green3 = p.green800
-	c.green4 = p.green900
-	c.cyan = p.cyan400
-	c.cyan2 = p.cyan600
-	c.cyan3 = p.cyan800
-	c.cyan4 = p.cyan900
-	c.blue = p.blue400
-	c.blue2 = p.blue600
-	c.blue3 = p.blue800
-	c.blue4 = p.blue900
-	c.purple = p.purple400
-	c.purple2 = p.purple600
-	c.purple3 = p.purple800
-	c.purple4 = p.purple900
-	c.magenta = p.magenta400
-	c.magenta2 = p.magenta600
-	c.magenta3 = p.magenta800
-	c.magenta4 = p.magenta900
-else
-	-- Light theme
-	c.bg = p.paper
-	c.bg2 = p.base50
-	c.ui = p.base100
-	c.ui2 = p.base150
-	c.ui3 = p.base200
-	c.tx = p.base800
-	c.tx2 = p.base600
-	c.tx3 = p.base400
-	c.red = p.red600
-	c.red2 = p.red400
-	c.red3 = p.red200
-	c.red4 = p.red100
-	c.orange = p.orange600
-	c.orange2 = p.orange400
-	c.orange3 = p.orange200
-	c.orange4 = p.orange100
-	c.yellow = p.yellow600
-	c.yellow2 = p.yellow400
-	c.yellow3 = p.yellow200
-	c.yellow4 = p.yellow100
-	c.green = p.green600
-	c.green2 = p.green400
-	c.green3 = p.green200
-	c.green4 = p.green100
-	c.cyan = p.cyan600
-	c.cyan2 = p.cyan400
-	c.cyan3 = p.cyan200
-	c.cyan4 = p.cyan100
-	c.blue = p.blue600
-	c.blue2 = p.blue400
-	c.blue3 = p.blue200
-	c.blue4 = p.blue100
-	c.purple = p.purple600
-	c.purple2 = p.purple400
-	c.purple3 = p.purple200
-	c.purple4 = p.purple100
-	c.magenta = p.magenta600
-	c.magenta2 = p.magenta400
-	c.magenta3 = p.magenta200
-	c.magenta4 = p.magenta100
+		-- Magenta
+		magenta950 = "#24131D",
+		magenta900 = "#39172B",
+		magenta850 = "#4F1B39",
+		magenta800 = "#641F46",
+		magenta700 = "#87285E",
+		magenta600 = "#A02F6F",
+		magenta500 = "#B74583",
+		magenta400 = "#CE5D97",
+		magenta300 = "#E47DA8",
+		magenta200 = "#F4A4C2",
+		magenta150 = "#F9B9CF",
+		magenta100 = "#FCCFDA",
+		magenta50 = "#FEE4E5",
+	}
 end
 
-M.p = p
-M.c = c
+---@param colors flexoki.PaletteColors
+---@return flexoki.ThemeColors
+function M.dark(colors)
+	return {
+		bg = colors.black,
+		bg2 = colors.base950,
+		ui = colors.base900,
+		ui2 = colors.base850,
+		ui3 = colors.base800,
+		tx = colors.base200,
+		tx2 = colors.base500,
+		tx3 = colors.base700,
+
+		-- Accent colors
+		red = colors.red400,
+		red2 = colors.red600,
+		red3 = colors.red800,
+		red4 = colors.red900,
+		orange = colors.orange400,
+		orange2 = colors.orange600,
+		orange3 = colors.orange800,
+		orange4 = colors.orange900,
+		yellow = colors.yellow400,
+		yellow2 = colors.yellow600,
+		yellow3 = colors.yellow800,
+		yellow4 = colors.yellow900,
+		green = colors.green400,
+		green2 = colors.green600,
+		green3 = colors.green800,
+		green4 = colors.green900,
+		cyan = colors.cyan400,
+		cyan2 = colors.cyan600,
+		cyan3 = colors.cyan800,
+		cyan4 = colors.cyan900,
+		blue = colors.blue400,
+		blue2 = colors.blue600,
+		blue3 = colors.blue800,
+		blue4 = colors.blue900,
+		purple = colors.purple400,
+		purple2 = colors.purple600,
+		purple3 = colors.purple800,
+		purple4 = colors.purple900,
+		magenta = colors.magenta400,
+		magenta2 = colors.magenta600,
+		magenta3 = colors.magenta800,
+		magenta4 = colors.magenta900,
+	}
+end
+
+---@param colors flexoki.PaletteColors
+---@return flexoki.ThemeColors
+function M.light(colors)
+	return {
+		bg = colors.paper,
+		bg2 = colors.base50,
+		ui = colors.base100,
+		ui2 = colors.base150,
+		ui3 = colors.base200,
+		tx = colors.base800,
+		tx2 = colors.base500,
+		tx3 = colors.base300,
+
+		-- Accent colors
+		red = colors.red600,
+		red2 = colors.red400,
+		red3 = colors.red200,
+		red4 = colors.red100,
+		orange = colors.orange600,
+		orange2 = colors.orange400,
+		orange3 = colors.orange200,
+		orange4 = colors.orange100,
+		yellow = colors.yellow600,
+		yellow2 = colors.yellow400,
+		yellow3 = colors.yellow200,
+		yellow4 = colors.yellow100,
+		green = colors.green600,
+		green2 = colors.green400,
+		green3 = colors.green200,
+		green4 = colors.green100,
+		cyan = colors.cyan600,
+		cyan2 = colors.cyan400,
+		cyan3 = colors.cyan200,
+		cyan4 = colors.cyan100,
+		blue = colors.blue600,
+		blue2 = colors.blue400,
+		blue3 = colors.blue200,
+		blue4 = colors.blue100,
+		purple = colors.purple600,
+		purple2 = colors.purple400,
+		purple3 = colors.purple200,
+		purple4 = colors.purple100,
+		magenta = colors.magenta600,
+		magenta2 = colors.magenta400,
+		magenta3 = colors.magenta200,
+		magenta4 = colors.magenta100,
+	}
+end
+
+---@param theme flexoki.Theme
+---@return flexoki.ThemeColors
+function M.get(theme)
+	local colors = M.all()
+
+	if theme == "light" then
+		return M.light(colors)
+	else
+		return M.dark(colors)
+	end
+end
 
 return M
